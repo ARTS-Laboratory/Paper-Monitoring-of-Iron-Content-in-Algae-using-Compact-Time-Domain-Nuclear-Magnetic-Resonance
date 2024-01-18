@@ -1,6 +1,6 @@
 clear; close all; clc;
 
-load C:\Users\parke\OneDrive\Documents\GitHub\Paper-Monitoring-of-Iron-Content-in-Algae-using-Compact-Time-Domain-Nuclear-Magnetic-Resonance\preliminaryData.mat
+load C:\Users\parke\OneDrive\Documents\GitHub\Paper-Monitoring-of-Iron-Content-in-Algae-using-Compact-Time-Domain-Nuclear-Magnetic-Resonance\preliminaryTesting\preliminaryData.mat
 
 time = data(:,1);
 t2Data = data(:,2:end);
@@ -20,6 +20,7 @@ lgd = legend;
 lgd.Title.String = 'distance (m)';
 lgd.String = {'0','1','3','5'};
 ax = gca; ax.FontSize = 15;
+ax.FontName = 'times';
 
 mdl = fitlm(distances,abs(rates));
 params = table2array(mdl.Coefficients);
@@ -28,13 +29,18 @@ d = linspace(0,5,1000);
  
 sz = 100;
 figure 
-plot(d,m*d+b,'k--','LineWidth',2)
+scatter(distances,abs(rates),sz,'k^','LineWidth',2)
 hold on
-scatter(distances,abs(rates),sz,'^','filled')
+plot(d,m*d+b,'k--','LineWidth',2)
 xlabel('distance (m)')
-ylabel('decay rate (V/s)')
+ylabel('T2 relaxation rate (V/s)')
+xlim([-0.5,5.5])
+xticks(0:5)
+ylim([0.525,0.575])
+yticks(0.53:0.01:0.57)
 grid on; box on;
 lgd = legend;
 lgd.String = {'linear fit','observations'};
 ax = gca; ax.FontSize = 15;
-title(sprintf('R^2 = %.2f',mdl.Rsquared.ordinary))
+ax.FontName = 'times';
+% title(sprintf('R^2 = %.2f',mdl.Rsquared.ordinary))

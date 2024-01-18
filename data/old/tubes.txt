@@ -1,0 +1,9 @@
+samples and cap colors...
+
+blue - 5m
+
+green - 3m
+
+pink - 1m
+
+yellow - 0m
