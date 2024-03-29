@@ -6,7 +6,7 @@ load C:\Users\parke\OneDrive\Documents\GitHub\Fuel-Processing\syntheticData\data
 files = dir(fullfile(folder));
 fsize = 7;
 
-plotT2 = 0;
+plotT2 = 1;
 
 decayData = ones(3955,20);
 for i = 3:height(files)
@@ -56,13 +56,14 @@ if plotT2
     ylabel('amplitude (V)')
     xticks(0:1:5)
     grid on; box on;
-    ax = gca; ax.FontSize = fsize; ax.FontName = 'serif';
+    ax = gca; ax.FontSize = 8; ax.FontName = 'serif';
     lgd = legend({'0','1','3','5'});
     lgd.Title.String = 'distance (m)';
+    lgd.Title.FontWeight = 'normal';
     lgd.ItemTokenSize = [15,15];
     
-    text(1.05,0.505,'initial amplitude','FontSize',fsize,'FontName','serif')
-    text(2.25,0.21,'~ 37% of initial','FontSize',fsize,'FontName','serif')
+    text(1.05,0.505,'initial amplitude','FontSize',8,'FontName','serif')
+    text(2.25,0.21,'~ 37% of initial','FontSize',8,'FontName','serif')
 
     f = gcf;
     f.Units = 'inches';
@@ -111,7 +112,7 @@ xlabel('distance from algae mat (m)')
 ylabel('T2 time (s)')
 xlim([-0.5,5.5])
 xticks(0:1:5)
-yticks(1.2:0.02:1.26)
+% yticks(1.2:0.02:1.26)
 % yticks(0.8:0.01:0.83);
 text(2.2,1.23,sprintf('R^{2} = %.3f',rsquared),'Color','black','fontname','serif','FontSize',fsize)
 text(1.4,1.245,sprintf('R^{2} = %.3f',rsquared1),'Color','black','fontname','serif','FontSize',fsize)
