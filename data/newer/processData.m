@@ -15,11 +15,13 @@ if bulk
     bulkData = table2array(readtable('aggregate.xlsx'));
     bulkData = bulkData*factor;
     afterSep = table2array(readtable('algae_after_sep.csv'));
+    afterSep2 = table2array(readtable('algae_after_sep_2.csv'));
     
     % filter
     N = 10;
     bulkData = movmedian(bulkData,N);
     afterSep = movmedian(afterSep,N);
+    afterSep2 = movmedian(afterSep2,N);
     
     % extract data
     diT2 = bulkData(:,1);
@@ -36,7 +38,7 @@ if bulk
     % make plot
     hold on
     plot(time,algaeT2,'LineWidth',1)
-    plot(time,afterSep,'LineWidth',1)
+    plot(time,afterSep2,'LineWidth',1)
     plot(tDown,diT2down,'k--','LineWidth',1)
 end
 
